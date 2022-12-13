@@ -11,6 +11,7 @@ import com.atahan.noteapp.R
 import com.atahan.noteapp.adapter.NoteAdapter
 import com.atahan.noteapp.databinding.FragmentNoteListBinding
 import com.atahan.noteapp.model.NoteEntity
+import com.atahan.noteapp.repository.NoteRepository
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
@@ -21,6 +22,9 @@ class NoteListFragment : Fragment() {
     @Inject
     lateinit var noteAdapter: NoteAdapter
 
+    @Inject
+    lateinit var repository: NoteRepository
+
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -29,8 +33,13 @@ class NoteListFragment : Fragment() {
             it.findNavController().navigate(R.id.action_noteListFragment_to_noteAddFragment)
         }
 
-        //recyclerview & adapter
-
+        repository.add(
+            NoteEntity(
+                0,
+                "TITLE",
+                "Description"
+            )
+        )
     }
 
     override fun onCreateView(
@@ -39,11 +48,13 @@ class NoteListFragment : Fragment() {
     ): View? {
         // Inflate the layout for this fragment
         binding = FragmentNoteListBinding.inflate(inflater, container, false)
+
+        //recyclerview & adapter
+        noteAdapter.differ.submitList(repository.getNotes())
         binding.rvNotes.apply {
             layoutManager = LinearLayoutManager(this@NoteListFragment.context)
             adapter = noteAdapter
         }
-
 
         return binding.root
     }

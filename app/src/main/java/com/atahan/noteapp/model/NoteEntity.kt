@@ -11,9 +11,9 @@ import com.atahan.noteapp.utils.Constants.NOTE_TABLE
 @Entity(tableName = NOTE_TABLE)
 class NoteEntity(
     @PrimaryKey(autoGenerate = true)
-    val id: Int,
+    val id: Int = 0,
     @ColumnInfo(name = COL_TITLE)
-    val title: String,
+    val title: String = "",
     @ColumnInfo(name = COL_DESC)
-    val desc: String
+    val desc: String = ""
 )
