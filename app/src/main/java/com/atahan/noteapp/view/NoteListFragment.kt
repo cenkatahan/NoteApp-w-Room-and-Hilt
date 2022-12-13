@@ -33,13 +33,13 @@ class NoteListFragment : Fragment() {
             it.findNavController().navigate(R.id.action_noteListFragment_to_noteAddFragment)
         }
 
-        repository.add(
-            NoteEntity(
-                0,
-                "TITLE",
-                "Description"
-            )
-        )
+//        repository.add(
+//            NoteEntity(
+//                0,
+//                "TITLE",
+//                "Description"
+//            )
+//        )
     }
 
     override fun onCreateView(
