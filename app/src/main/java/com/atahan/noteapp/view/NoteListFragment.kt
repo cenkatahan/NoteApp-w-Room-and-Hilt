@@ -31,8 +31,6 @@ class NoteListFragment : Fragment(), ListFragmentContractor.IListFragment {
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
-
-        //fab listener
         binding.fabAdd.setOnClickListener {
             presenter.onCLickNavigate()
         }
@@ -43,11 +41,9 @@ class NoteListFragment : Fragment(), ListFragmentContractor.IListFragment {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentNoteListBinding.inflate(inflater, container, false)
 
         presenter.setView(this)
-        //recyclerview & adapter
         noteAdapter.differ.submitList(repository.getNotes())
         binding.rvNotes.apply {
             layoutManager = LinearLayoutManager(this@NoteListFragment.context)
@@ -62,7 +58,8 @@ class NoteListFragment : Fragment(), ListFragmentContractor.IListFragment {
     }
 
     override fun navigate() {
-        this@NoteListFragment.findNavController().navigate(R.id.action_noteListFragment_to_noteAddFragment)
+        this@NoteListFragment.findNavController()
+            .navigate(R.id.action_noteListFragment_to_noteAddFragment)
     }
 
     override fun deleteAll() {

@@ -33,7 +33,6 @@ class NoteAddFragment : Fragment(), AddFragmentContractor.IAddFragment {
         inflater: LayoutInflater, container: ViewGroup?,
         savedInstanceState: Bundle?
     ): View? {
-        // Inflate the layout for this fragment
         binding = FragmentNoteAddBinding.inflate(inflater, container, false)
 
         presenter.setView(this)
