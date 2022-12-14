@@ -11,6 +11,7 @@ import com.atahan.noteapp.R
 import com.atahan.noteapp.adapter.NoteAdapter
 import com.atahan.noteapp.databinding.FragmentNoteListBinding
 import com.atahan.noteapp.presenter.listfragment.ListFragmentContractor
+import com.atahan.noteapp.presenter.listfragment.ListFragmentPresenter
 import com.atahan.noteapp.repository.NoteRepository
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
@@ -24,6 +25,9 @@ class NoteListFragment : Fragment(), ListFragmentContractor.IListFragment {
 
     @Inject
     lateinit var repository: NoteRepository
+
+    @Inject
+    lateinit var presenter: ListFragmentPresenter
 
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
