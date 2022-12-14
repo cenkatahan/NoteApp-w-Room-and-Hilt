@@ -44,7 +44,7 @@ class NoteAddFragment : Fragment() {
 
             repository.add(
                 NoteEntity(
-                    0,
+                    id = 0,
                     title = title,
                     desc = desc
                 )
