@@ -9,4 +9,8 @@ class ListFragmentPresenter @Inject constructor() : ListFragmentContractor.IList
     override fun onCLickNavigate() {
         view.navigate()
     }
+
+    fun setView(iView: ListFragmentContractor.IListFragment) {
+        view = iView
+    }
 }

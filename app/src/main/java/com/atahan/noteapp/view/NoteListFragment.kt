@@ -34,7 +34,7 @@ class NoteListFragment : Fragment(), ListFragmentContractor.IListFragment {
 
         //fab listener
         binding.fabAdd.setOnClickListener {
-            navigate()
+            presenter.onCLickNavigate()
         }
 
     }
@@ -46,6 +46,7 @@ class NoteListFragment : Fragment(), ListFragmentContractor.IListFragment {
         // Inflate the layout for this fragment
         binding = FragmentNoteListBinding.inflate(inflater, container, false)
 
+        presenter.setView(this)
         //recyclerview & adapter
         noteAdapter.differ.submitList(repository.getNotes())
         binding.rvNotes.apply {

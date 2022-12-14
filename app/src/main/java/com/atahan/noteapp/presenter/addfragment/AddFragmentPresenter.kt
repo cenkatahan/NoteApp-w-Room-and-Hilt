@@ -12,4 +12,8 @@ class AddFragmentPresenter @Inject constructor() : AddFragmentContractor.IAddFra
     override fun navigate() {
         view.navigateBack()
     }
+
+    fun setView(iView: AddFragmentContractor.IAddFragment) {
+        view = iView
+    }
 }

@@ -36,6 +36,7 @@ class NoteAddFragment : Fragment(), AddFragmentContractor.IAddFragment {
         // Inflate the layout for this fragment
         binding = FragmentNoteAddBinding.inflate(inflater, container, false)
 
+        presenter.setView(this)
         binding.btnAdd.setOnClickListener {
             presenter.addNote()
             presenter.navigate()
