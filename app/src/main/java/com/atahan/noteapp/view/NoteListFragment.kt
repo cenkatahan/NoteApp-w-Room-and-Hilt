@@ -5,18 +5,18 @@ import androidx.fragment.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import androidx.navigation.findNavController
+import androidx.navigation.fragment.findNavController
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.atahan.noteapp.R
 import com.atahan.noteapp.adapter.NoteAdapter
 import com.atahan.noteapp.databinding.FragmentNoteListBinding
-import com.atahan.noteapp.model.NoteEntity
+import com.atahan.noteapp.presenter.listfragment.ListFragmentContractor
 import com.atahan.noteapp.repository.NoteRepository
 import dagger.hilt.android.AndroidEntryPoint
 import javax.inject.Inject
 
 @AndroidEntryPoint
-class NoteListFragment : Fragment() {
+class NoteListFragment : Fragment(), ListFragmentContractor.IListFragment {
     private lateinit var binding: FragmentNoteListBinding
 
     @Inject
@@ -30,7 +30,7 @@ class NoteListFragment : Fragment() {
 
         //fab listener
         binding.fabAdd.setOnClickListener {
-            it.findNavController().navigate(R.id.action_noteListFragment_to_noteAddFragment)
+            navigate()
         }
 
     }
@@ -50,6 +50,10 @@ class NoteListFragment : Fragment() {
         }
 
         return binding.root
+    }
+
+    override fun navigate() {
+        this@NoteListFragment.findNavController().navigate(R.id.action_noteListFragment_to_noteAddFragment)
     }
 
 }
