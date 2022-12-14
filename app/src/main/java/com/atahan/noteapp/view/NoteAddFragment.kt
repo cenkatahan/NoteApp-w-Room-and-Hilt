@@ -40,6 +40,8 @@ class NoteAddFragment : Fragment(), AddFragmentContractor.IAddFragment {
         binding.btnAdd.setOnClickListener {
             presenter.addNote()
             presenter.navigate()
+            binding.etTitle.text.clear()
+            binding.etDesc.text.clear()
         }
 
         return binding.root
