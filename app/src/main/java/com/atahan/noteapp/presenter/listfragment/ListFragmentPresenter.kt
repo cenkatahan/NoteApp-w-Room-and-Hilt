@@ -10,6 +10,10 @@ class ListFragmentPresenter @Inject constructor() : ListFragmentContractor.IList
         view.navigate()
     }
 
+    override fun clickDelete() {
+        view.deleteAll()
+    }
+
     fun setView(iView: ListFragmentContractor.IListFragment) {
         view = iView
     }

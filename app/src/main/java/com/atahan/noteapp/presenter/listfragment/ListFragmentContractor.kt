@@ -4,10 +4,12 @@ interface ListFragmentContractor {
 
     interface IListFragment {
         fun navigate()
+        fun deleteAll()
     }
 
     interface IListFragmentPresenter {
         fun onCLickNavigate()
+        fun clickDelete()
     }
 
 }

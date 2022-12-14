@@ -54,11 +54,20 @@ class NoteListFragment : Fragment(), ListFragmentContractor.IListFragment {
             adapter = noteAdapter
         }
 
+        binding.btnDelete.setOnClickListener {
+            presenter.clickDelete()
+        }
+
         return binding.root
     }
 
     override fun navigate() {
         this@NoteListFragment.findNavController().navigate(R.id.action_noteListFragment_to_noteAddFragment)
+    }
+
+    override fun deleteAll() {
+        repository.deleteNotes()
+        noteAdapter.differ.submitList(repository.getNotes())
     }
 
 }
